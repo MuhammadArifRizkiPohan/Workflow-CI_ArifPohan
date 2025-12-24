@@ -27,3 +27,8 @@ jobs:
       - name: Run MLflow Project
         run: |
           mlflow run MLProject
+      
+      - name: Get latest MLflow run_id
+        run: |
+          echo "Latest MLflow run_id:"
+          ls -td mlruns/*/* | head -n 1 | awk -F'/' '{print $(NF)}'
