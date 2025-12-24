@@ -6,8 +6,10 @@ from sklearn.metrics import accuracy_score, f1_score
 import mlflow
 import mlflow.sklearn
 
+# ⬇️ WAJIB agar artefak tersimpan di CI
+mlflow.set_tracking_uri("file:///tmp/mlruns")
 
-
+# Autolog (akan otomatis log model + metrics)
 mlflow.sklearn.autolog()
 
 def train_model():
