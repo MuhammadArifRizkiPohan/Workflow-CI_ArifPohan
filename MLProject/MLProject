@@ -1,4 +1,4 @@
-name: heart-disease-training
+name: mlflow-ci-project
 
 conda_env: conda.yaml
 
