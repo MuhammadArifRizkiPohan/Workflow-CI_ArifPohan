@@ -6,11 +6,11 @@ from sklearn.metrics import accuracy_score, f1_score
 import mlflow
 import mlflow.sklearn
 
-# Aktifkan autolog
+
+
 mlflow.sklearn.autolog()
 
 def train_model():
-    # Load dataset preprocessing
     df = pd.read_csv("heartdisease_preprocessing.csv")
 
     X = df.drop("target", axis=1)
@@ -22,15 +22,14 @@ def train_model():
 
     model = LogisticRegression(max_iter=1000)
 
-    with mlflow.start_run():
-        model.fit(X_train, y_train)
+    model.fit(X_train, y_train)
 
-        y_pred = model.predict(X_test)
-        acc = accuracy_score(y_test, y_pred)
-        f1 = f1_score(y_test, y_pred)
+    y_pred = model.predict(X_test)
+    acc = accuracy_score(y_test, y_pred)
+    f1 = f1_score(y_test, y_pred)
 
-        print("Accuracy:", acc)
-        print("F1 Score:", f1)
+    print("Accuracy:", acc)
+    print("F1 Score:", f1)
 
 if __name__ == "__main__":
     train_model()
